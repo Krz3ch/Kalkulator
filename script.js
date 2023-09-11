@@ -41,5 +41,30 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    
+    wynik.addEventListener("click", function(){
+        poprzednia_liczba.textContent = aktualna_liczba.textContent;
+
+        akt = parseFloat(aktualna_liczba.textContent);
+        pop = parseFloat(poprzednia_liczba.textContent);
+        op = znak.textContent;
+        wynik_wartosc = 0;
+        
+        switch(op){
+            case "+":
+                wynik_wartosc = akt + pop;
+                break;
+            case "-":
+                wynik_wartosc = akt + pop;
+                break;
+            case "*":
+                wynik_wartosc = akt * pop;
+                break;
+            case ":":
+                wynik_wartosc = akt / pop;
+                break;
+        }
+        
+        
+        aktualna_liczba.textContent = wynik_wartosc;
+    });
 })
