@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
             aktualna_liczba.textContent += event.target.textContent;
 
         });
-      });
+    });
 
 
     clear_btn.addEventListener("click", function(){
@@ -30,4 +30,16 @@ document.addEventListener("DOMContentLoaded", function() {
         poprzednia_liczba.textContent = "";
         znak.textContent = "";
     });
+
+
+    operator.forEach(function(operator) {
+        operator.addEventListener("click", function(event){
+            znak.textContent = "";
+            znak.textContent += event.target.textContent;
+            poprzednia_liczba.textContent = aktualna_liczba.textContent;
+            aktualna_liczba.textContent = "";
+        });
+    });
+
+    
 })
