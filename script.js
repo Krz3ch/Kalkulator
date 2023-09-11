@@ -24,4 +24,10 @@ document.addEventListener("DOMContentLoaded", function() {
         });
       });
 
+
+    clear_btn.addEventListener("click", function(){
+        aktualna_liczba.textContent = "";
+        poprzednia_liczba.textContent = "";
+        znak.textContent = "";
+    });
 })
