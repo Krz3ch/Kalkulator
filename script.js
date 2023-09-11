@@ -14,10 +14,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
     wynik = document.querySelector(".rownasie")
 
-
-
     
 
+    numer.forEach(function(numer) {
+        numer.addEventListener("click", function(event){
 
+            aktualna_liczba.textContent += event.target.textContent;
+
+        });
+      });
 
 })
