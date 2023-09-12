@@ -27,6 +27,7 @@ h1{
 
 .wyswietlacz{
     background-color: rgb(3, 3, 3);
+    min-height: 100px;
 }
 
 .poprzednia{
