@@ -26,31 +26,36 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     clear_btn.addEventListener("click", function(){
-        aktualna_liczba.textContent = "";
-        poprzednia_liczba.textContent = "";
-        znak.textContent = "";
+        aktualna_liczba.textContent = " ";
+        poprzednia_liczba.textContent = " ";
+        znak.textContent = " ";
     });
 
 
     operator.forEach(function(operator) {
         operator.addEventListener("click", function(event){
-            znak.textContent = "";
+            znak.textContent = " ";
             znak.textContent += event.target.textContent;
             poprzednia_liczba.textContent = aktualna_liczba.textContent;
-            aktualna_liczba.textContent = "";
+            aktualna_liczba.textContent = " ";
         });
     });
 
     wynik.addEventListener("click", function(){
-        poprzednia_liczba.textContent = aktualna_liczba.textContent;
 
+        console.log(aktualna_liczba.textContent);
+        console.log(poprzednia_liczba.textContent);
+        console.log(znak.textContent);
+
+        poprzednia_liczba.textContent = aktualna_liczba.textContent;
+        
         akt = parseFloat(aktualna_liczba.textContent);
         pop = parseFloat(poprzednia_liczba.textContent);
         op = znak.textContent;
         wynik_wartosc = 0;
         
         switch(op){
-            case "+":
+            case '+':
                 wynik_wartosc = akt + pop;
                 break;
             case "-":
