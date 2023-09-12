@@ -25,9 +25,14 @@ h1{
     text-align: right;
 }
 
-.wyswietlacz{
+.wyswietlacz {
     background-color: rgb(3, 3, 3);
-    min-height: 100px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 10px;
+    overflow: auto;
 }
 
 .poprzednia{
@@ -65,7 +70,7 @@ button{
     grid-column: -2/-1;
 }
 
-button :hover{
+button:hover{
     background-color: gray;
 
 }
