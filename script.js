@@ -1,79 +1,77 @@
-    document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() {
 
-        aktualna_liczba = document.querySelector(".dodawana");
+    var aktualna_liczba = document.querySelector(".dodawana");
+    var poprzednia_liczba = document.querySelector(".poprzednia");
+    var znak = document.querySelector(".znak");
+    var clear_btn = document.querySelector(".clear");
+    var operator = document.querySelectorAll(".operator");
+    var numer = document.querySelectorAll(".numer");
+    var wynik = document.querySelector(".rownasie");
 
-        poprzednia_liczba = document.querySelector(".poprzednia");
-
-        znak = document.querySelector(".znak");
-
-        clear_btn = document.querySelector(".clear");
-
-        operator = document.querySelectorAll(".operator");
-
-        numer = document.querySelectorAll(".numer");
-
-        wynik = document.querySelector(".rownasie")
-
-        
-
-        numer.forEach(function(numer) {
-            numer.addEventListener("click", function(event){
-
-                aktualna_liczba.textContent += event.target.textContent;
-
-            });
+    numer.forEach(function(numer) {
+        numer.addEventListener("click", function(event){
+            aktualna_liczba.textContent += event.target.textContent;
         });
+    });
 
+    clear_btn.addEventListener("click", function(){
+        aktualna_liczba.textContent = "";
+        poprzednia_liczba.textContent = "";
+        znak.textContent = "";
+    });
 
-        clear_btn.addEventListener("click", function(){
-            aktualna_liczba.textContent = "";
-            poprzednia_liczba.textContent = "";
-            znak.textContent = "";
-        });
+    operator.forEach(function(operator) {
+        operator.addEventListener("click", function(event){
+            if(event.target.textContent === "^2") { 
 
+                var aktu = parseFloat(aktualna_liczba.textContent);
 
-        operator.forEach(function(operator) {
-            operator.addEventListener("click", function(event){
+                var wynik_war = aktu * aktu; 
                 
-                if (aktualna_liczba.textContent != ""){
+                aktualna_liczba.textContent = wynik_war.toString();
+                poprzednia_liczba.textContent = "";
+                znak.textContent = "";
+            } else {
+                if (aktualna_liczba.textContent != "") {
                     znak.textContent = event.target.textContent;
                     poprzednia_liczba.textContent = aktualna_liczba.textContent;
                     aktualna_liczba.textContent = "";
-                }else{
+                } else {
                     znak.textContent = event.target.textContent;
-                    aktualna_liczba.textContent == "";
                 }
-                
-                
-            });
-        });
-
-        wynik.addEventListener("click", function(){
-
-            poprzednia_liczba.textContent = aktualna_liczba.textContent;
-            
-            akt = parseFloat(aktualna_liczba.textContent);
-            pop = parseFloat(poprzednia_liczba.textContent);
-            op = znak.textContent;
-            wynik_wartosc = 0;
-            
-            switch(op){
-                case "+":
-                    wynik_wartosc = akt+pop;
-                    break;
-                case "-":
-                    wynik_wartosc = akt-pop;
-                    break;
-                case "*":
-                    wynik_wartosc = akt*pop;
-                    break;
-                case ":":
-                    wynik_wartosc = akt/pop;
-                    break;
             }
-            
-            poprzednia_liczba.textContent = "";
-            znak.textContent = "";
-            aktualna_liczba.textContent = wynik_wartosc.toString();
         });
-    })
+    });
+    
+
+
+    wynik.addEventListener("click", function(){
+        var akt = parseFloat(aktualna_liczba.textContent);
+        var pop = parseFloat(poprzednia_liczba.textContent);
+        var op = znak.textContent;
+        var wynik_wartosc = 0;
+
+        switch(op){
+            case "+":
+                wynik_wartosc = pop + akt;
+                break;
+            case "-":
+                wynik_wartosc = pop - akt;
+                break;
+            case "*":
+                wynik_wartosc = pop * akt;
+                break;
+            case ":":
+                if (akt !== 0) {
+                    wynik_wartosc = pop / akt;
+                } else {
+                    wynik_wartosc = "Błąd";
+                }
+                break;
+        }
+
+        aktualna_liczba.textContent = wynik_wartosc.toString();
+        poprzednia_liczba.textContent = "";
+        znak.textContent = "";
+    });
+});
